@@ -24,10 +24,10 @@ public class IvrServlet extends HttpServlet {
 		// Note that Tropo will send you a POST request so either overriding service or post is ok
 		
 		Tropo tropo = new Tropo();
-		tropo.say("Welcome to our company. Please enter the number of the department you wish to be forwarded to:");
+		tropo.say("Welcome to health assurance service. Please enter the following digits to get our service:");
 		tropo.ask(NAME("userChoice"), BARGEIN(true), MODE(DTMF), TIMEOUT(10f), ATTEMPTS(2)).and(
 			Do.say(VALUE("Sorry, I didn't hear anything"),EVENT("timeout"))
-			  .say("Press #1 for Customer Support. Press #2 for sales. Press #3 for emergencies. Press #4 for any other thing."),
+			  .say("Press #1 if you cannot breath. Press #2 if you want to fill questionniare. Press #3 for emergencies. Press #4 for any other thing."),
 			Do.choices(VALUE("[1 DIGIT]"))
 		);
 		tropo.on(EVENT("continue"), NEXT("redirect"));
